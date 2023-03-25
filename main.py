@@ -36,7 +36,7 @@ def main():
 
     # Wizard Context
     context = {"role": "system",
-               "content": "Eres un asistente muy útil."}
+               "content": "You are a very helpful assistant."}
     messages = [context]
 
     while True:
