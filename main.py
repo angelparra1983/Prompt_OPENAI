@@ -9,6 +9,17 @@ Webs de interés:
 - Documentación API ChatGPT: https://platform.openai.com/docs/api-reference/chat
 - Typer: https://typer.tiangolo.com
 - Rich: https://rich.readthedocs.io/en/stable/
+
+The "typer" module is a Python library for creating command line (CLI) applications quickly and easily. Provides a
+Simple and clear syntax for defining CLI commands and command line options in Python, allowing users to interact with scripts and programs from the command line.
+
+The "rich" module is a Python library for enhancing the display of text in the terminal with formatting and styling features.
+advanced, such as colors, bold, italics, among others.
+
+The "rich.table" module is a Python library for creating tables in the terminal with advanced formatting and styling features, such as
+colors and bold. This module is part of the "rich" library and provides a simple and easy to use solution for printing tables on the
+terminal.
+
 """
 
 def main():
@@ -17,13 +28,13 @@ def main():
 
     print("💬 [bold green]ChatGPT API en Python[/bold green]")
 
-    table = Table("Comando", "Descripción")
-    table.add_row("exit", "Salir de la aplicación")
-    table.add_row("new", "Crear una nueva conversación")
+    table = Table("Comando", "Description")
+    table.add_row("exit", "Exit application")
+    table.add_row("new", "Create a new conversation")
 
     print(table)
 
-    # Contexto del asistente
+    # Wizard Context
     context = {"role": "system",
                "content": "Eres un asistente muy útil."}
     messages = [context]
@@ -33,7 +44,7 @@ def main():
         content = __prompt()
 
         if content == "new":
-            print("🆕 Nueva conversación creada")
+            print("🆕 New conversation created")
             messages = [context]
             content = __prompt()
 
@@ -50,12 +61,12 @@ def main():
 
 
 def __prompt() -> str:
-    prompt = typer.prompt("\n¿Sobre qué quieres hablar? ")
+    prompt = typer.prompt("\n¿What do you want to talk about? ")
 
     if prompt == "exit":
-        exit = typer.confirm("✋ ¿Estás seguro?")
+        exit = typer.confirm("✋ ¿You're sure?")
         if exit:
-            print("👋 ¡Hasta luego!")
+            print("👋 ¡Bye!")
             raise typer.Abort()
 
         return __prompt()
